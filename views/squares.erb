@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+
+<head>
+<link rel="stylesheet" href="/style.css">
+</head>
+
+<body>
+<div>
+<br>
+<img src="/mm.png">
+
+<p><%=p1%><%=p2%></p>
+
+<table>
+	<tr>
+		<td class="br"><%=board[0]%></td><td class="br"><%=board[1]%></td><td class="b"><%=board[2]%></td>
+	</tr><tr>
+		<td class="br"><%=board[3]%></td><td class="br"><%=board[4]%></td><td class="b"><%=board[5]%></td>
+	</tr><tr>
+		<td class="r"><%=board[6]%></td><td class="r"><%=board[7]%></td><td><%=board[8]%></td>
+	</tr>
+</table>
+
+<p>Player <%=n%>, Please choose a square</p>
+
+<form action="/tictactoe/game" method="POST">
+	<input class="box" type="text" name="square" maxlength="1" required>
+	<input type="submit" name="submit" value="submit">
+</form>
+<p><%=error%></p>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,13 @@
+img {display:block;margin:0 auto;border: 1px solid black;}
+
+table {font:2.0em times; border-collapse: collapse; margin:auto;}
+td {padding:5px 10px;}
+td.br {border-bottom: 1px solid black; border-right: 1px solid black;}
+td.b {border-bottom: 1px solid black;}
+td.r {border-right: 1px solid black;}
+
+p {text-align:center;}
+
+form {text-align:center;}
+
+input.box {width:20px;text-align:center;}
