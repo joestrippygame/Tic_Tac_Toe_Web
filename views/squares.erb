@@ -21,9 +21,9 @@
 	</tr>
 </table>
 
-<p>Player <%=n%>, Please choose a square</p>
+<p>Player <%=p%>, Please choose a square</p>
 
-<form action="/tictactoe/game" method="POST">
+<form action="/game" method="POST">
 	<input class="box" type="text" name="square" maxlength="1" required>
 	<input type="submit" name="submit" value="submit">
 </form>
