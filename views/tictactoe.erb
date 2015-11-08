@@ -5,9 +5,11 @@
 </head>
 
 <body>
-<div>
+
 <br>
 <img src="/mm.png">
+
+<div>
 
 <p>Lets play Tic Tac Toe!</p>
 
@@ -21,13 +23,17 @@
 	</tr>
 </table>
 
-<p>Player 1, Please choose X or O</p>
+<p>Player 1 Please choose <span class="blue">X</span> or <span class="blue">O</span></p>
 
 <form action="/tictactoe" method="POST">
-	<input class="box" type="text" name="XorO" maxlength="1" required>
+	<select name="XorO" required>
+		<option value="q">Choose</option>
+		<option value="x">X</option>
+		<option value="o">O</option>
+	<select>
 	<input type="submit" name="submit" value="submit">
 </form>
-<p><%=p1%><%=p2%><%=error%></p>
+<p><span class="red"><%=error%></span></p>
 
 </div>
 </body>

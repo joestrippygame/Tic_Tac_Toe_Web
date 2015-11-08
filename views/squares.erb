@@ -5,11 +5,12 @@
 </head>
 
 <body>
-<div>
+
 <br>
 <img src="/mm.png">
 
-<p><%=p1%><%=p2%></p>
+<div>
+<p><%=p1%><span class="blue"><%=p1a%></span><%=p2%><span class="blue"><%=p2a%></span></p>
 
 <table>
 	<tr>
@@ -21,13 +22,24 @@
 	</tr>
 </table>
 
-<p>Player <%=current%>, Please choose a square</p>
+<p>Player <%=current%> - Please choose a square</p>
 
 <form action="/game" method="POST">
-	<input class="box" type="text" name="square" maxlength="1" required>
+	<select name="square" required>
+		<option value="0">Choose</option>
+		<option value="1">1</option>
+		<option value="2">2</option>
+		<option value="3">3</option>
+		<option value="4">4</option>
+		<option value="5">5</option>
+		<option value="6">6</option>
+		<option value="7">7</option>
+		<option value="8">8</option>
+		<option value="9">9</option>
+	<select>
 	<input type="submit" name="submit" value="submit">
 </form>
-<p><%=error%><br><%=error2%></p>
+<p><span class="red"><%=error%><br><%=error2%></span></p>
 
 </div>
 </body>
