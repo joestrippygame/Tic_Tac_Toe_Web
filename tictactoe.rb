@@ -55,3 +55,10 @@ post '/game' do
 									  :current => game.current, :board => game.board}
 		end	
 end
+
+post '/new' do
+
+	game = TicTacToe.new(["1","2","3","4","5","6","7","8","9"],"","",1)
+	redirect to('/tictactoe')
+
+end
