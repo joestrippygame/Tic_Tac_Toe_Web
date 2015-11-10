@@ -25,6 +25,7 @@ end
 post '/game' do
 
 	choice = params[:square].to_i
+	
 	player_marker = game.current_player()
 	
 		if game.square_valid?(choice, game.board) == true
@@ -48,11 +49,19 @@ post '/game' do
 			end
 		
 		else
-			erb :squares, :locals => {:p1 => "Player 1 is: ", :p1a => game.player1, 
-									  :p2 => " and Player 2 is: ", :p2a => game.player2, 
-									  :error => "#{choice} is already taken or is not a valid number", 
-									  :error2 => "Please choose again.", 
-									  :current => game.current, :board => game.board}
+			if choice == 0
+				erb :squares, :locals => {:p1 => "Player 1 is: ", :p1a => game.player1, 
+										  :p2 => " and Player 2 is: ", :p2a => game.player2, 
+										  :error => "Please choose 1 - 9", 
+										  :error2 => "", 
+										  :current => game.current, :board => game.board}
+			else
+				erb :squares, :locals => {:p1 => "Player 1 is: ", :p1a => game.player1, 
+										  :p2 => " and Player 2 is: ", :p2a => game.player2, 
+										  :error => "#{choice} is already taken", 
+										  :error2 => "Please choose again.", 
+										  :current => game.current, :board => game.board}
+			end
 		end	
 end
 
