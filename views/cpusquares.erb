@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+
+<head>
+<link rel="stylesheet" href="/style.css">
+</head>
+
+<body>
+
+<br>
+<img src="/mm.png">
+
+<div>
+<p><%=p1%><span class="blue"><%=p1a%></span><%=p2%><span class="blue"><%=p2a%></span></p>
+
+<table>
+	<tr>
+		<td class="br"><%=board[0]%></td><td class="br"><%=board[1]%></td><td class="b"><%=board[2]%></td>
+	</tr><tr>
+		<td class="br"><%=board[3]%></td><td class="br"><%=board[4]%></td><td class="b"><%=board[5]%></td>
+	</tr><tr>
+		<td class="r"><%=board[6]%></td><td class="r"><%=board[7]%></td><td><%=board[8]%></td>
+	</tr>
+</table>
+
+<p>Player <%=current%> - Please choose a square</p>
+
+<form action="/cpugame" method="POST">
+	<select name="square" required>
+		<option value="0">Choose</option>
+		<option value="1">1</option>
+		<option value="2">2</option>
+		<option value="3">3</option>
+		<option value="4">4</option>
+		<option value="5">5</option>
+		<option value="6">6</option>
+		<option value="7">7</option>
+		<option value="8">8</option>
+		<option value="9">9</option>
+	<select>
+	<input type="submit" name="submit" value="submit">
+</form>
+<p><span class="red"><%=error%><br><%=error2%></span></p>
+
+</div>
+</body>
+</html>

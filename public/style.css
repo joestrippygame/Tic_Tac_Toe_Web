@@ -12,8 +12,12 @@ td.r {border-right: 1px solid black;}
 
 p {text-align:center;}
 
+h3 {text-align:center;}
+
 span.blue {color:blue;}
 span.red {color:red;}
+span.one {text-align:left;color:blue;}
+span.two {text-align:left;color:green;}
 
 form {text-align:center;}
 select {text-align:center;}

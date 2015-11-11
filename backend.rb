@@ -21,6 +21,16 @@ class TicTacToe
 		current == 1 ? player1 : player2
 	end
 	
+	def computer_move(board)
+		n = rand(1..9)
+		if square_valid?(n,board) == false
+			computer_move(board)
+		else
+			player_marker = current_player()
+			board[n - 1] = player_marker
+		end
+	end
+	
 	def change
 		current == 1 ? current = 2 : current = 1
 	end

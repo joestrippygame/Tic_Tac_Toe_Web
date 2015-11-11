@@ -11,7 +11,7 @@
 
 <div>
 
-<p>Lets play Tic Tac Toe!</p>
+<h3>Lets play Tic Tac Toe!</h3>
 
 <table>
 	<tr>
@@ -23,14 +23,14 @@
 	</tr>
 </table>
 
-<p>Player 1 Please choose <span class="blue">X</span> or <span class="blue">O</span></p>
+<p>Do you want to play a:<br>
+<span class="one">1 player game (v.s. the computer)</span><br>
+<span class="two">or a 2 player game</span></p>
 
 <form action="/tictactoe" method="POST">
-	<select name="XorO" required>
-		<option value="q">Choose</option>
-		<option value="x">X</option>
-		<option value="o">O</option>
-	<select>
+	<input type="radio" name="GameType" value="1">1 Player Game
+	<input type="radio" name="GameType" value="2">2 Player Game
+	<p>
 	<input type="submit" name="submit" value="submit">
 </form>
 <p><span class="red"><%=error%></span></p>
