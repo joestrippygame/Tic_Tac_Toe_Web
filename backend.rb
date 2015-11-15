@@ -1,12 +1,13 @@
 class TicTacToe
 
-	attr_accessor :board, :player1, :player2, :current
+	attr_accessor :board, :player1, :player2, :current, :type
 
-	def initialize(board, player1, player2, current)
-		@board = board
-		@player1 = player1
-		@player2 = player2
-		@current = current
+	def initialize
+		@board = ["1","2","3","4","5","6","7","8","9"]
+		@player1 = ""
+		@player2 = ""
+		@current = 1
+		@type = ""
 	end
 	
 	def marker_valid?(p1)

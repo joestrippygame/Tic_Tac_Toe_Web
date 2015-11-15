@@ -10,7 +10,7 @@
 <img src="/mm.png">
 
 <div>
-<p><%=p1%><span class="blue"><%=p1a%></span><%=p2%><span class="blue"><%=p2a%></span></p>
+<p>Player 1 is: <span class="blue"><%=p1%></span> and Player 2 is: <span class="blue"><%=p2%></span></p>
 
 <table>
 	<tr>
@@ -24,7 +24,7 @@
 
 <p>Player <%=current%> - Please choose a square</p>
 
-<form action="/2pgame" method="POST">
+<form action="/game" method="POST">
 	<select name="square" required>
 		<option value="0">Choose</option>
 		<option value="1">1</option>

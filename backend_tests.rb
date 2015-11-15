@@ -4,7 +4,7 @@ require "minitest/autorun"
 class Tictactoe_test < Minitest::Test
 
 	def test_initialize
-		game = TicTacToe.new(["1","2","3","4","5","6","7","8","9"],"","",1)
+		game = TicTacToe.new()
 	
 	#test_for_initalized_instance_variables
 		assert_equal(["1","2","3","4","5","6","7","8","9"], game.board)
@@ -44,6 +44,7 @@ class Tictactoe_test < Minitest::Test
 	#test_for_win?
 		assert_equal(true, game.win?(["X","X","X","4","5","6","7","8","9"]))
 		assert_equal(false, game.win?(["1","X","X","X","5","6","7","8","9"]))
+		assert_equal(true, game.win?(["1","2","3","O","O","O","7","8","9"]))
 	end
 
 end
