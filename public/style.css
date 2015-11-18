@@ -1,27 +1,83 @@
-body {background:url('binary.jpg')}
+body {
+	background: url('binary.jpg')
+}
 
-img {display:block;margin:0 auto;border: 1px solid black;}
+img {
+	display: block;
+	margin: 0 auto;
+	border: 1px solid black;
+}
 
-div {background:white;width:300px;padding: 10px 0px;margin:10px auto;}
+div {
+	background: white;
+	width: 300px;
+	padding: 10px 0px;
+	margin: 10px auto;}
 
-table {font:1.7em times; border-collapse: collapse; margin:auto; text-align:center;}
-td {padding:5px 10px;}
-td.br {border-bottom: 1px solid black; border-right: 1px solid black;}
-td.b {border-bottom: 1px solid black;}
-td.r {border-right: 1px solid black;}
+table {
+	font: 1.7em times;
+	border-collapse: collapse; 
+	margin: auto;
+	text-align: center;
+}
 
-p {text-align:center;}
+td {
+	padding: 5px 10px;
+}
 
-h3 {text-align:center;}
+td.br {
+	border-bottom: 1px solid black; 
+	border-right: 1px solid black;
+}
 
-span.blue {color:blue;}
-span.red {color:red;}
-span.one {text-align:left;color:blue;}
-span.two {text-align:left;color:green;}
+td.b {
+	border-bottom: 1px solid black;
+}
 
-form {text-align:center;}
-select {text-align:center;}
+td.r {
+	border-right: 1px solid black;
+}
 
-input.box {width:20px;text-align:center;}
+p {
+	text-align:center;
+}
 
-a {color:blue; text-decoration:none;}
+h3 {
+	text-align:center;
+}
+
+span.blue {
+	color:blue;
+}
+
+span.red {
+	color:red;
+}
+
+span.one {
+	text-align:left;
+	color:blue;
+}
+
+span.two {
+	text-align:left;
+	color:green;
+}
+
+form {
+	text-align:center;
+}
+
+select {
+	text-align:center;
+}
+
+input.box {
+	width:20px;
+	text-align:center;
+}
+
+a {
+	color:blue; 
+	text-decoration:none;
+}

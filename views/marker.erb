@@ -1,40 +1,47 @@
 <!DOCTYPE html>
-
-<head>
-<link rel="stylesheet" href="/style.css">
-</head>
-
-<body>
-
-<br>
-<img src="/mm.png">
-
-<div>
-
-<p>Lets play Tic Tac Toe!</p>
-
-<table>
-	<tr>
-		<td class="br"><%=board[0]%></td><td class="br"><%=board[1]%></td><td class="b"><%=board[2]%></td>
-	</tr><tr>
-		<td class="br"><%=board[3]%></td><td class="br"><%=board[4]%></td><td class="b"><%=board[5]%></td>
-	</tr><tr>
-		<td class="r"><%=board[6]%></td><td class="r"><%=board[7]%></td><td><%=board[8]%></td>
-	</tr>
-</table>
-
-<p>Player 1 Please choose <span class="blue">X</span> or <span class="blue">O</span></p>
-
-<form action="/marker" method="POST">
-	<select name="XorO" required>
-		<option value="q">Choose</option>
-		<option value="x">X</option>
-		<option value="o">O</option>
-	<select>
-	<input type="submit" name="submit" value="submit">
-</form>
-<p><span class="red"><%=error%></span></p>
-
-</div>
-</body>
+<html>
+	<head>
+		<link rel="stylesheet" href="/style.css">
+	</head>
+	<body>
+		<br>
+		<img src="/mm.png">
+		<div>
+			<p>Lets play Tic Tac Toe!</p>
+			<table>
+				<tr>
+					<td class="br"><%=board[0]%></td><td class="br"><%=board[1]%></td><td class="b"><%=board[2]%></td>
+				</tr>
+				<tr>
+					<td class="br"><%=board[3]%></td><td class="br"><%=board[4]%></td><td class="b"><%=board[5]%></td>
+				</tr>
+				<tr>
+					<td class="r"><%=board[6]%></td><td class="r"><%=board[7]%></td><td><%=board[8]%></td>
+				</tr>
+			</table>
+			<p>Player 1 Please choose 
+				<span class="blue">X</span> or <span class="blue">O</span>
+			</p>
+			<form name="marker" action="/marker" method="POST">
+				<select id="XorO" name="XorO">
+					<option value="">Choose</option>
+					<option value="X">X</option>
+					<option value="O">O</option>
+				<select>
+				<input type="submit" value="select" onclick="return validateMarker()">
+			</form>
+			<p>
+				<span class="red"><%=error%></span>
+			</p>
+		</div>
+		<script>
+			function validateMarker() {
+				var x = document.getElementById("XorO").value;
+				if (x == "") {
+					alert("Please choose X or O");
+					return false;
+				}
+			}
+		</script>
+	</body>
 </html>
