@@ -1,6 +1,6 @@
 class TicTacToe
 
-	attr_accessor :board, :player1, :player2, :current, :type
+	attr_accessor :board, :player1, :player2, :current, :type, :winning_routes
 
 	def initialize
 		@board = ["1","2","3","4","5","6","7","8","9"]
@@ -8,6 +8,7 @@ class TicTacToe
 		@player2 = ""
 		@current = 1
 		@type = ""
+		@winning_routes = [[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[2,4,6]]
 	end
 	
 	def p2
@@ -18,15 +19,69 @@ class TicTacToe
 		current == 1 ? player1 : player2
 	end
 	
-	def computer_move
-		# n = 3 if board[0] == player2 && board[1] == player2
-		# n = 9 if board[0] == player2 && board[4] == player2
+	def opposite_player
+		current == 1 ? player2 : player1
+	end
+	
+	def computer_winning_move
+		player_marker = current_player()
+		move = false
+		winning_routes.each do |group|
+		count = 0
+			group.each do |value|
+				count += 1 if board[value] == player_marker
+			end
+			
+			if count == 2
+				group.each do |value|
+					if board[value] != "X" && board[value] != "O"
+						board[value] = player_marker
+						move = true
+					end
+				end
+			end
+		break if move == true
+		end
+		move
+	end
+	
+	def computer_blocking_move
+		player_marker = current_player()
+		opponent = opposite_player()
+		moved = false
+		winning_routes.each do |group|
+		count = 0
+			group.each do |value|
+				count += 1 if board[value] == opponent
+			end
+			
+			if count == 2
+				group.each do |value|
+					if board[value] != "X" && board[value] != "O"
+						board[value] = player_marker
+						moved = true
+					end
+				end
+			end
+		break if moved == true
+		end
+		moved
+	end
+	
+	def computer_random_move
 		n = rand(1..9)
-		if square_available?(n) == false
-			computer_move()
-		else
-			player_marker = current_player()
-			board[n - 1] = player_marker
+			if square_available?(n) == false
+				computer_move()
+			else
+				player_marker = current_player()
+				board[n - 1] = player_marker
+			end
+	end
+	
+	def computer_move
+		if computer_winning_move()
+		elsif computer_blocking_move()
+		else computer_random_move()
 		end
 	end
 	
@@ -42,31 +97,16 @@ class TicTacToe
 		board_tos = board.join(",")
 		board_tos =~ (/\d/) ? false : true
 	end
-
-	def win?
-		if board[0] == "X" && board[1] == "X" && board[2] == "X" ||
-		board[3] == "X" && board[4] == "X" && board[5] == "X" ||
-		board[6] == "X" && board[7] == "X" && board[8] == "X" ||
-		board[0] == "X" && board[3] == "X" && board[6] == "X" ||
-		board[1] == "X" && board[4] == "X" && board[7] == "X" ||
-		board[2] == "X" && board[5] == "X" && board[8] == "X" ||
-		board[0] == "X" && board[4] == "X" && board[8] == "X" ||
-		board[2] == "X" && board[4] == "X" && board[6] == "X" ||
-		board[0] == "O" && board[1] == "O" && board[2] == "O" ||
-		board[3] == "O" && board[4] == "O" && board[5] == "O" ||
-		board[6] == "O" && board[7] == "O" && board[8] == "O" ||
-		board[0] == "O" && board[3] == "O" && board[6] == "O" ||
-		board[1] == "O" && board[4] == "O" && board[7] == "O" ||
-		board[2] == "O" && board[5] == "O" && board[8] == "O" ||
-		board[0] == "O" && board[4] == "O" && board[8] == "O" ||
-		board[2] == "O" && board[4] == "O" && board[6] == "O"
-			true
-		else 
-			false
+	
+	def winner?
+		result = false
+		marker = current_player()
+		winning_routes.each do |group|
+			if board[group[0]] == marker && board[group[1]] == marker && board[group[2]] == marker
+				result = true
+			end
+		end
+		result
 	end
-end
 
 end
-
-
-#winning_routes = [[1,2,3],[4,5,6],[7,8,9],[1,4,7],[2,5,8],[3,6,9],[1,5,9],[3,5,7]]

@@ -60,20 +60,20 @@ class Tictactoe_test < Minitest::Test
 		assert_equal(game.board, ["X","2","3","4","5","6","7","8","9"])
 	end
 	
-	def test_initialize4
-		game = TicTacToe.new()
+	# def test_initialize4
+		# game = TicTacToe.new()
 		
 	#test_for_winning_move
-		game.board = ["O","O","3","4","5","6","7","8","9"]
-		game.player1 = "X"
-		game.player2 = "O"
-		game.current = 2
-		game.computer_move()
-		assert_equal(["O","O","O","4","5","6","7","8","9"], game.board)
+		# game.board = ["O","O","3","4","5","6","7","8","9"]
+		# game.player1 = "X"
+		# game.player2 = "O"
+		# game.current = 2
+		# game.computer_move()
+		# assert_equal(["O","O","O","4","5","6","7","8","9"], game.board)
 		
-		game.board = ["O", "2", "3", "4", "O", "6", "7", "8", "9"]
-		game.computer_move()
-		assert_equal(["O", "2", "3", "4", "O", "6", "7", "8", "O"], game.board)
-	end
+		# game.board = ["O", "2", "3", "4", "O", "6", "7", "8", "9"]
+		# game.computer_move()
+		# assert_equal(["O", "2", "3", "4", "O", "6", "7", "8", "O"], game.board)
+	# end
 
 end

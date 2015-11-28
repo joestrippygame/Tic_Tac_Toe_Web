@@ -41,7 +41,7 @@ get '/cpu' do
 end
 
 get '/status' do
-	if game.win?() == true
+	if game.winner?() == true
 		redirect to('/win')
 	elsif game.board_full?() == true
 		redirect to('/tie')
