@@ -23,7 +23,7 @@
 			</nav>
 		</header>
 		<section>
-			<h3>Lets play Tic Tac Toe!</h3>
+			<h3>How brave are you feeling today?</h3>
 			<table>
 				<tr>
 					<td class="br"><%=board[0]%></td><td class="br"><%=board[1]%></td><td class="b"><%=board[2]%></td>
@@ -35,18 +35,14 @@
 					<td class="r"><%=board[6]%></td><td class="r"><%=board[7]%></td><td><%=board[8]%></td>
 				</tr>
 			</table>
-			<p class="tictactoe">Do you want to play a:
-				<br>
-				<span class="one">1 player game v.s. the computer
-				</span>
-				<br>
-				<span class="two">2 player game v.s. another person
-				</span>
+			<p class="tictactoe">Please choose your difficulty Level:
 			</p>
-			<form action="/tictactoe" method="POST">
-				<input type="radio" name="GameType" value="1">  1 Player Game
+			<form action="/marker" method="POST">
+				<input type="radio" name="level" value="easy">  Easy
 				<br>
-				<input class="2p" type="radio" name="GameType" value="2">  2 Player Game
+				<input type="radio" name="level" value="medium">  Medium
+				<br>
+				<input type="radio" name="level" value="hard">  Hard
 				<br>
 				<input type="submit" name="submit" value="Submit">
 			</form>

@@ -1,13 +1,29 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<link rel="stylesheet" href="/style.css">
+		<title>Mined Minds Tic Tac Toe</title>
+		<link rel="stylesheet" href="css/normalize.css">
+		<link rel="stylesheet" href="css/main-style.css">
 	</head>
 	<body>
-		<br>
-		<img src="/mm.png">
-		<div>
-			<p>Lets play Tic Tac Toe!</p>
+		<header>
+			<a href="index.html">
+				<img class="header-image" src="img/mm.png" alt="header image">
+			</a>
+			<div class="greeting">
+				<span>Welcome to Mined Minds Tic Tac Toe!</span>
+			</div>
+			<nav>
+				<ul>
+					<li><a href="index.html">Home</a></li>
+					<li><a href="rules.html">Tic Tac Toe Rules</a></li>
+					<li class="youarehere"><a href="http://localhost:4567/tictactoe">Play Tic Tac Toe</a></li>
+					<li><a href="http://www.minedminds.org" target="new">Minedminds.org</a></li>
+				</ul>
+			</nav>
+		</header>
+		<section>
+			<h3>Choose a side.</h3>
 			<table>
 				<tr>
 					<td class="br"><%=board[0]%></td><td class="br"><%=board[1]%></td><td class="b"><%=board[2]%></td>
@@ -19,10 +35,10 @@
 					<td class="r"><%=board[6]%></td><td class="r"><%=board[7]%></td><td><%=board[8]%></td>
 				</tr>
 			</table>
-			<p>Player 1 Please choose 
+			<p class="tictactoe">Player 1 Please choose 
 				<span class="blue">X</span> or <span class="blue">O</span>
 			</p>
-			<form name="marker" action="/marker" method="POST">
+			<form name="marker" action="/squares" method="POST">
 				<select id="XorO" name="XorO">
 					<option value="">Choose</option>
 					<option value="X">X</option>
@@ -33,7 +49,10 @@
 			<p>
 				<span class="red"><%=error%></span>
 			</p>
-		</div>
+		</section>
+		<footer>
+		&copy; 2015 Mined Minds
+		</footer>
 		<script>
 			function validateMarker() {
 				var x = document.getElementById("XorO").value;

@@ -77,4 +77,92 @@ class Tictactoe_test < Minitest::Test
 		game.computer_blocking_move()
 		assert_equal(["O","O","X","4","5","6","O","8","9"], game.board)
 	end
+	
+	def test_for_a_fork
+		game = TicTacToe.new()
+		game.player1 = "O"
+		game.board = ["O","2","O","4","5","6","7","8","9"]
+		game.computer_fork_move()
+		assert_equal(["O","2","O","4","5","6","O","8","9"], game.board)
+	end
+	
+	def test_for_a_fork2
+		game = TicTacToe.new()
+		game.player1 = "O"
+		game.board = ["O","2","3","4","5","6","O","8","9"]
+		game.computer_fork_move()
+		assert_equal(["O","2","O","4","5","6","O","8","9"], game.board)
+	end
+	
+	def test_for_a_fork3
+		game = TicTacToe.new()
+		game.player1 = "O"
+		game.player2 = "X"
+		game.board = ["O","2","3","4","X","O","X","8","9"]
+		game.computer_fork_move()
+		assert_equal(["O","2","O","4","X","O","X","8","9"], game.board)
+	end
+	
+	def test_for_a_fork_block
+		game = TicTacToe.new()
+		game.player1 = "O"
+		game.player2 = "X"
+		game.board = ["X","2","3","4","O","X","7","8","9"]
+		game.computer_fork_block()
+		assert_equal(["X","2","O","4","O","X","7","8","9"], game.board)
+	end
+	
+	def test_for_a_fork_block2
+		game = TicTacToe.new()
+		game.player1 = "O"
+		game.player2 = "X"
+		game.board = ["X","2","3","O","5","6","X","8","9"]
+		game.computer_fork_block()
+		assert_equal(["X","2","O","O","5","6","X","8","9"], game.board)
+	end
+	
+	def test_for_picking_the_center_square
+		game = TicTacToe.new()
+		game.player1 = "O"
+		game.player2 = "X"
+		game.board = ["X","2","3","4","5","6","7","8","9"]
+		game.computer_move_center()
+		assert_equal(["X","2","3","4","O","6","7","8","9"], game.board)
+	end
+	
+	def test_for_picking_the_center_square
+		game = TicTacToe.new()
+		game.player1 = "O"
+		game.player2 = "X"
+		game.board = ["X","2","3","4","X","6","7","8","9"]
+		game.computer_move_center()
+		assert_equal(["X","2","3","4","X","6","7","8","9"], game.board)
+	end
+	
+	def test_for_picking_the_opposite_corner
+		game = TicTacToe.new()
+		game.player1 = "O"
+		game.player2 = "X"
+		game.board = ["X","2","3","4","5","6","7","8","9"]
+		game.computer_move_opposite_corner()
+		assert_equal(["X","2","3","4","5","6","7","8","O"], game.board)
+	end
+	
+	def test_for_picking_the_opposite_corner2
+		game = TicTacToe.new()
+		game.player1 = "O"
+		game.player2 = "X"
+		game.board = ["1","2","X","4","5","6","7","8","9"]
+		game.computer_move_opposite_corner()
+		assert_equal(["1","2","X","4","5","6","O","8","9"], game.board)
+	end
+	
+	def test_for_picking_an_empty_corner
+		game = TicTacToe.new()
+		game.player1 = "O"
+		game.player2 = "X"
+		game.board = ["X","2","X","4","5","6","X","8","9"]
+		game.computer_move_empty_corner()
+		assert_equal(["X","2","X","4","5","6","X","8","O"], game.board)
+	end
 end

@@ -1,15 +1,29 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<link rel="stylesheet" href="/style.css">
+		<title>Mined Minds Tic Tac Toe</title>
+		<link rel="stylesheet" href="css/normalize.css">
+		<link rel="stylesheet" href="css/main-style.css">
 	</head>
 	<body>
-		<br>
-		<img src="/mm.png">
-		<div>
-			<p>
-				Player 1 is: <span class="blue"><%=p1%></span> and Player 2 is: <span class="blue"><%=p2%></span>
-			</p>
+		<header>
+			<a href="index.html">
+				<img class="header-image" src="img/mm.png" alt="header image">
+			</a>
+			<div class="greeting">
+				<span>Welcome to Mined Minds Tic Tac Toe!</span>
+			</div>
+			<nav>
+				<ul>
+					<li><a href="index.html">Home</a></li>
+					<li><a href="rules.html">Tic Tac Toe Rules</a></li>
+					<li class="youarehere"><a href="http://localhost:4567/tictactoe">Play Tic Tac Toe</a></li>
+					<li><a href="http://www.minedminds.org" target="new">Minedminds.org</a></li>
+				</ul>
+			</nav>
+		</header>
+		<section>
+			<h3>Game in Progress.  Who will win?</h3>
 			<table>
 				<tr>
 					<td class="br"><%=board[0]%></td><td class="br"><%=board[1]%></td><td class="b"><%=board[2]%></td>
@@ -21,7 +35,7 @@
 					<td class="r"><%=board[6]%></td><td class="r"><%=board[7]%></td><td><%=board[8]%></td>
 				</tr>
 			</table>
-			<p>
+			<p class="tictactoe">
 				Player <%=current%> - Please choose a square
 			</p>
 			<form action="/game" method="POST">
@@ -39,16 +53,23 @@
 				<select>
 				<input type="submit" name="submit" value="submit" onclick="return validate()">
 			</form>
-			<p>
-				<span class="red"><%=error%><br><%=error2%></span>
+			<p class="tictactoe">
+				<span class="red"><%=error%><br><%=error2%></span><span class="red" id="thinking"></span>
+				<span class="hidden" id="type"><%=type%></span>
 			</p>
-		</div>
+		</section>
+		<footer>
+		&copy; 2015 Mined Minds
+		</footer>
 		<script>
 			function validate() {
 				var x = document.getElementById("square").value;
 				if (x == "") {
 					alert("Please choose 1-9");
 					return false;
+				}
+				else if (document.getElementById("type").innerHTML == "1") {
+					document.getElementById("thinking").innerHTML = "Computer is Thinking...";
 				}
 			}
 		</script>
