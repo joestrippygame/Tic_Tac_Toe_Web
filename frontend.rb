@@ -1,84 +1,86 @@
 require 'sinatra'
 require 'tilt/erb'
-require_relative "backend.rb"
+require_relative "board.rb"
+require_relative "players.rb"
+require_relative "ai.rb"
 
-get '/home' do
-	html :index
-end
-
-game = TicTacToe.new()
+game_board = Board.new()
+players = Players.new()
+ai = AI.new()
 
 get '/tictactoe' do
-	erb :gametype, :locals => {:error => "", :board => game.board}
+	erb :gametype, :locals => {:error => "", :board => game_board.board}
 end
 
 post '/tictactoe' do
-	game.type = params[:GameType]
-	if game.type == "1"
-		erb :level, :locals => {:error => "", :board => game.board}
+	players.type = params[:GameType]
+	if players.type == "1"
+		erb :level, :locals => {:error => "", :board => game_board.board}
 	else
-		erb :marker, :locals => {:error => "", :board => game.board}
+		erb :marker, :locals => {:error => "", :board => game_board.board}
 	end
 end
 
 post '/marker' do
-	game.level = params[:level] if game.type == "1"
-	erb :marker, :locals => {:error => "", :board => game.board}
+		ai.level = params[:level] if players.type == "1"
+		puts "ai initialization"
+	erb :marker, :locals => {:error => "", :board => game_board.board}
 end
 
 post '/squares' do
-	game.player1 = params[:XorO]
-	game.player2 = game.p2()
-	erb :squares, :locals => {:p1 => game.player1, :p2 => game.player2, 
+	players.player1 = params[:XorO]
+	players.player2 = players.p2()
+	erb :squares, :locals => {:p1 => players.player1, :p2 => players.player2, 
 							  :error => "", :error2 => "", 
-							  :current => game.current, :board => game.board, :type => game.type}
+							  :current => players.current, :board => game_board.board, :type => players.type}
 end
 
 post '/game' do
 	choice = params[:square].to_i
-	player_marker = game.current_player()
+	player_marker = players.current_player()
 	
-	if game.square_available?(choice) == true
-		game.board[choice - 1] = player_marker
+	if game_board.square_available?(choice - 1) == true
+		game_board.board[choice - 1] = player_marker
 		redirect to('/status')
 	else
-		erb :squares, :locals => {:p1 => game.player1, :p2 => game.player2, 
+		erb :squares, :locals => {:p1 => players.player1, :p2 => players.player2, 
 								  :error => "#{choice} is already taken", :error2 => "Please choose again.", 
-								  :current => game.current, :board => game.board, :type => game.type}
+								  :current => players.current, :board => game_board.board, :type => players.type}
 	end	
 end
 
 get '/cpu' do
 	sleep 1
-	player_marker = game.current_player()
-	move = game.computer_move(game.level)
-	game.board[move] = player_marker
+	player_marker = players.current_player()
+	move = ai.computer_move(ai.level)
+	game_board.board[move] = player_marker
 	redirect to('/status')
 end
 
 get '/status' do
-	if game.winner?(game.current_player) == true
+	if game_board.winner?(players.current_player) == true
 		redirect to('/win')
-	elsif game.board_full?() == true
+	elsif game_board.board_full?() == true
 		redirect to('/tie')
 	end
 	
-	game.current = game.change()
-	redirect to('/cpu') if game.type == "1" && game.current == 2
-	erb :squares, :locals => {:p1 => game.player1, :p2 => game.player2, 
+	players.current = players.change()
+	redirect to('/cpu') if players.type == "1" && players.current == 2
+	erb :squares, :locals => {:p1 => players.player1, :p2 => players.player2, 
 							  :error => "", :error2 => "", 
-							  :current => game.current, :board => game.board, :type => game.type}	
+							  :current => players.current, :board => game_board.board, :type => players.type}	
 end
 
 get '/win' do
-	erb :gameover, :locals => {:p1 => "Player #{game.current} wins!!!", :board => game.board}
+	erb :gameover, :locals => {:p1 => "Player #{players.current} wins!!!", :board => game_board.board}
 end
 
 get '/tie' do
-	erb :gameover, :locals => {:p1 => "It's a tie.", :board => game.board}
+	erb :gameover, :locals => {:p1 => "It's a tie.", :board => game_board.board}
 end
 
 post '/new' do
-	game = TicTacToe.new()
+	game_board = Board.new()
+	players = Players.new()
 	redirect to('/tictactoe')
 end
